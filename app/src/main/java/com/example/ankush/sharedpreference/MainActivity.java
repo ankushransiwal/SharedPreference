@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         etName = (EditText)findViewById(R.id.etName);
 
         sp1 = getSharedPreferences("Myp1",MODE_PRIVATE);
-        final SharedPreferences.Editor editor = sp1.edit();
+
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 String name = etName.getText().toString();
                 int age = Integer.parseInt(etAge.getText().toString());
 
-
+                SharedPreferences.Editor editor = sp1.edit();
                 editor.putString("n",name);
                 editor.putInt("a",age);
                 editor.commit();
@@ -60,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences.Editor editor = sp1.edit();
+
                 editor.remove("n");
                 editor.remove("a");
                 editor.clear();
